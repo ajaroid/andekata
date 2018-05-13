@@ -1,0 +1,24 @@
+Perjanjian Lisensi
+
+Harap baca perjanjian lisensi dibawah dengan seksama sebelum melanjutkan untuk memasang perangkat lunak ini:
+
+Pendahuluan
+1.1 Perjanjian ini adalah perjanjian penggunaan perangkat lunak ANDEKATA (Anak Desa Kerja Nyata) antara anda sebagai pengguna akhir dan kami dari PT. Ajaro Solusi Indonesia sebagai pemilik hak cipta perangkat lunak ini.  Perangkat lunak ini hanya boleh digunakan untuk manajemen informasi Desa di bawah perijinan dari PT. Ajaro Solusi Indonesia.
+
+Lisensi
+2.2 Anda bebas menggunakan perangkat lunak ini sebagai sarana pendukung manajemen informasi Desa sesuai ketentuan yang kami terapkan.
+2.3 Kami berusaha mengembangkan perangkat lunak yang telah diuji dan layak untuk digunakan, namun kami tidak bisa memberikan garansi dari segala macam tuntutan dari akibat penggunaan perangkat lunak yang disebabkan oleh kesalahan anda sebagai pengguna akhir.
+2.4 Dilarang menggunakan program kami tanpa ijin.
+2.5 Dilarang memperjual belikan perangkat lunak kami tanpa ijin.
+2.6 Dilarang memodifikasi, membongkar atau merekayasa balik perangkat lunak.
+
+
+Lampiran
+
+Undang-undang perlindungan tentang Hak Cipta dan Hak Atas Kekayaan Intelektual (HAKI) 
+
+1. Barang siapa dengan sengaja dan tanpa hak melakukan perbuatan sebagaimana dimaksud dalam Pasal 2 ayat (1) atau Pasal 49 ayat (1) dan ayat (2) dipidana dengan pidana penjara masing-masing paling sedikit 1 (satu) bulan dan/ atau denda paling sedikit Rp 1.000.000,00 (satu juta rupiah), atau pidana penjara paling lama 7 (tujuh) tahun dan/ atau denda paling banyak Rp5.000.0000.000,00 (lima miliar rupiah). 
+
+2. Barang siapa dengan sengaja menyiarkan, memamerkan, mengedarkan, atau menjual kepada umum suatu ciptaan atau barang hasil pelanggaran hak cipta atau hak terkait sebagaimana dimaksud pada ayat 1 (satu) dipidana dengan pidana penjara paling lama 5 (lima) tahun dan/ atau denda paling banyak Rp500.000.000,00 (lima ratus juta rupiah).
+
+3. Barang siapa dengan sengaja dan tanpa hak memperbanyak penggunaan untuk kepentingan komersial suatu program komputer dipidana dengan pidana penjara paling lama 5 (lima) tahun dan/ atau denda paling banyak Rp1.000.000.000,00 (satu miliar rupiah).
