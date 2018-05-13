@@ -1,0 +1,210 @@
+<?php
+
+class ActionSwitchVersion
+{
+    private $neardSplash;
+    
+    private $version;
+    private $bin;
+    private $currentVersion;
+    private $restart;
+    private $service;
+    private $changePort;
+    private $filesToScan;
+    private $boxTitle;
+    
+    const GAUGE_SERVICES = 1;
+    const GAUGE_OTHERS = 6;
+    
+    public function __construct($args)
+    {
+        global $neardLang, $neardBins, $neardWinbinder;
+        
+        if (isset($args[0]) && !empty($args[0]) && isset($args[1]) && !empty($args[1])) {
+            $this->pathsToScan = array();
+            $this->version = $args[1];
+            
+            if ($args[0] == $neardBins->getApache()->getName()) {
+                $this->bin = $neardBins->getApache();
+                $this->currentVersion = $neardBins->getApache()->getVersion();
+                $this->restart = true;
+                $this->service = $neardBins->getApache()->getService();
+                $this->changePort = true;
+                $folderList = Util::getFolderList($neardBins->getApache()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getApache()->getRootPath() . '/' . $folder,
+                        'includes' => array('.ini', '.conf'),
+                        'recursive' => true
+                    );
+                }
+            } elseif ($args[0] == $neardBins->getPhp()->getName()) {
+                $this->bin = $neardBins->getPhp();
+                $this->currentVersion = $neardBins->getPhp()->getVersion();
+                $this->restart = true;
+                $this->service = $neardBins->getApache()->getService();
+                $this->changePort = false;
+                $folderList = Util::getFolderList($neardBins->getPhp()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getPhp()->getRootPath() . '/' . $folder,
+                        'includes' => array('.php', '.bat', '.ini', '.reg', '.inc'),
+                        'recursive' => true
+                    );
+                }
+            } elseif ($args[0] == $neardBins->getMysql()->getName()) {
+                $this->bin = $neardBins->getMysql();
+                $this->currentVersion = $neardBins->getMysql()->getVersion();
+                $this->restart = true;
+                $this->service = $neardBins->getMysql()->getService();
+                $this->changePort = true;
+                $folderList = Util::getFolderList($neardBins->getMysql()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getMysql()->getRootPath() . '/' . $folder,
+                        'includes' => array('my.ini'),
+                        'recursive' => false
+                    );
+                }
+            } elseif ($args[0] == $neardBins->getMariadb()->getName()) {
+                $this->bin = $neardBins->getMariadb();
+                $this->currentVersion = $neardBins->getMariadb()->getVersion();
+                $this->restart = true;
+                $this->service = $neardBins->getMariadb()->getService();
+                $this->changePort = true;
+                $this->pathsToScan= Util::getFolderList($neardBins->getMariadb()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $paths[] = array(
+                        'path' => $neardBins->getMariadb()->getRootPath() . '/' . $folder,
+                        'includes' => array('my.ini'),
+                        'recursive' => false
+                    );
+                }
+            } elseif ($args[0] == $neardBins->getPostgresql()->getName()) {
+                $this->bin = $neardBins->getPostgresql();
+                $this->currentVersion = $neardBins->getPostgresql()->getVersion();
+                $this->restart = true;
+                $this->service = $neardBins->getPostgresql()->getService();
+                $this->changePort = true;
+                $folderList = Util::getFolderList($neardBins->getPostgresql()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getPostgresql()->getRootPath() . '/' . $folder,
+                        'includes' => array('.nrd', '.conf', '.bat'),
+                        'recursive' => true
+                    );
+                }
+            } elseif ($args[0] == $neardBins->getNodejs()->getName()) {
+                $this->bin = $neardBins->getNodejs();
+                $this->currentVersion = $neardBins->getNodejs()->getVersion();
+                $this->restart = true;
+                $this->service = null;
+                $this->changePort = false;
+                $folderList = Util::getFolderList($neardBins->getNodejs()->getRootPath());
+                foreach ($folderList as $folder) {
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getNodejs()->getRootPath() . '/' . $folder . '/etc',
+                        'includes' => array('npmrc'),
+                        'recursive' => true
+                    );
+                    $this->pathsToScan[] = array(
+                        'path' => $neardBins->getNodejs()->getRootPath() . '/' . $folder . '/node_modules/npm',
+                        'includes' => array('npmrc'),
+                        'recursive' => false
+                    );
+                }
+            }
+            
+            $this->boxTitle = sprintf($neardLang->getValue(Lang::SWITCH_VERSION_TITLE), $this->bin->getName(), $this->version);
+            
+            // Start splash screen
+            $this->neardSplash = new Splash();
+            $this->neardSplash->init(
+                $this->boxTitle,
+                self::GAUGE_SERVICES * count($neardBins->getServices()) + self::GAUGE_OTHERS,
+                $this->boxTitle
+            );
+            
+            $neardWinbinder->setHandler($this->neardSplash->getWbWindow(), $this, 'processWindow', 1000);
+            $neardWinbinder->mainLoop();
+            $neardWinbinder->reset();
+        }
+    }
+    
+    public function processWindow($window, $id, $ctrl, $param1, $param2)
+    {
+        global $neardCore, $neardLang, $neardBins, $neardWinbinder;
+        
+        if ($this->version == $this->currentVersion) {
+            $neardWinbinder->messageBoxWarning(sprintf($neardLang->getValue(Lang::SWITCH_VERSION_SAME_ERROR), $this->bin->getName(), $this->version), $this->boxTitle);
+            $neardWinbinder->destroyWindow($window);
+        }
+        
+        // scan folder
+        $this->neardSplash->incrProgressBar();
+        if (!empty($this->pathsToScan)) {
+            Util::changePath(Util::getFilesToScan($this->pathsToScan));
+        }
+        
+        // switch
+        $this->neardSplash->incrProgressBar();
+        if ($this->bin->switchVersion($this->version, true) === false) {
+            $this->neardSplash->incrProgressBar(self::GAUGE_SERVICES * count($neardBins->getServices()) + self::GAUGE_OTHERS);
+            $neardWinbinder->destroyWindow($window);
+        }
+        
+        // remove service
+        if ($this->service != null) {
+            $binName = $this->bin->getName() == $neardLang->getValue(Lang::PHP) ? $neardLang->getValue(Lang::APACHE) : $this->bin->getName();
+            $this->neardSplash->setTextLoading(sprintf($neardLang->getValue(Lang::REMOVE_SERVICE_TITLE), $binName));
+            $this->neardSplash->incrProgressBar();
+            $this->service->delete();
+        } else {
+            $this->neardSplash->incrProgressBar();
+        }
+        
+        // reload config
+        $this->neardSplash->setTextLoading($neardLang->getValue(Lang::SWITCH_VERSION_RELOAD_CONFIG));
+        $this->neardSplash->incrProgressBar();
+        Bootstrap::loadConfig();
+    
+        // reload bins
+        $this->neardSplash->setTextLoading($neardLang->getValue(Lang::SWITCH_VERSION_RELOAD_BINS));
+        $this->neardSplash->incrProgressBar();
+        $neardBins->reload();
+        
+        // change port
+        if ($this->changePort) {
+            $this->bin->reload();
+            $this->bin->changePort($this->bin->getPort());
+        }
+    
+        if (!$this->restart) {
+            $this->neardSplash->incrProgressBar(self::GAUGE_SERVICES * count($neardBins->getServices()) + 1);
+            
+            $neardWinbinder->messageBoxInfo(
+                sprintf($neardLang->getValue(Lang::SWITCH_VERSION_OK), $this->bin->getName(), $this->version),
+                $this->boxTitle);
+            
+            $neardWinbinder->destroyWindow($window);
+        }
+            
+        $this->neardSplash->setTextLoading(sprintf($neardLang->getValue(Lang::SWITCH_VERSION_REGISTRY), Registry::APP_BINS_REG_ENTRY));
+        $this->neardSplash->incrProgressBar(2);
+        Util::setAppBinsRegKey(Util::getAppBinsRegKey(false));
+
+        $this->neardSplash->setTextLoading($neardLang->getValue(Lang::SWITCH_VERSION_RESET_SERVICES));
+        foreach ($neardBins->getServices() as $sName => $service) {
+            $this->neardSplash->incrProgressBar();
+            $service->delete();
+        }
+
+        $neardWinbinder->messageBoxInfo(
+            sprintf($neardLang->getValue(Lang::SWITCH_VERSION_OK_RESTART), $this->bin->getName(), $this->version, APP_TITLE),
+            $this->boxTitle);
+        
+        $neardCore->setExec(ActionExec::RESTART);
+
+        $neardWinbinder->destroyWindow($window);
+    }
+}
