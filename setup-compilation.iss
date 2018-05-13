@@ -45,5 +45,8 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 [Run]
 Filename: "{app}\andekata-scripts\andekata-installation.bat"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php startup"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php reload"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVersion"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
