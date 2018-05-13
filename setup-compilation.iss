@@ -23,7 +23,7 @@ DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=C:\Ajaro\Andekata.bak\lisensi.txt
 OutputDir=C:\Ajaro
-OutputBaseFilename=setup
+OutputBaseFilename=andekata-setup-1.0.0
 Compression=lzma
 SolidCompression=yes
 
@@ -48,5 +48,13 @@ Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php startup"
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php reload"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVersion"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
+Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+[UninstallRun]
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php quit"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{pf}\{#MyAppName}"
+Type: files; Name: "{app}\*"
+Type: filesandordirs; Name: "{app}"
