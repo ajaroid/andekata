@@ -639,27 +639,7 @@ class Util
                 'recursive' => true
             );
         }
-        
-        // MySQL
-        $folderList = self::getFolderList($neardBins->getMysql()->getRootPath());
-        foreach ($folderList as $folder) {
-            $paths[] = array(
-                'path' => $neardBins->getMysql()->getRootPath() . '/' . $folder,
-                'includes' => array('my.ini'),
-                'recursive' => false
-            );
-        }
-        
-        // MariaDB
-        $folderList = self::getFolderList($neardBins->getMariadb()->getRootPath());
-        foreach ($folderList as $folder) {
-            $paths[] = array(
-                'path' => $neardBins->getMariadb()->getRootPath() . '/' . $folder,
-                'includes' => array('my.ini'),
-                'recursive' => false
-            );
-        }
-        
+
         // PostgreSQL
         $folderList = self::getFolderList($neardBins->getPostgresql()->getRootPath());
         foreach ($folderList as $folder) {

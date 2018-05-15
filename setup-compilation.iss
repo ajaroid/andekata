@@ -49,12 +49,9 @@ Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php reload";
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVersion"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\andekata-scripts\andekata-api-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated
 
-[UninstallRun]
-Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php quit"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{pf}\{#MyAppName}"
 Type: files; Name: "{app}\*"
 Type: filesandordirs; Name: "{app}"
