@@ -70,6 +70,15 @@ CALL %SZ% x tmp\%NEARD_CONSOLE_FILE% -aoa -otools\console
 CALL %SZ% x tmp\%NEARD_GHOSTSCRIPT_FILE% -aoa -otools\ghostscript
 CALL %SZ% x tmp\%NEARD_GIT_FILE% -aoa -otools\git
 
+REM register redis-server to system using nssm
+CALL core\libs\nssm\nssm.exe install andekataredis "%~dp0bin\redis\redis2.4.6\redis-server.exe"
+CALL core\libs\nssm\nssm.exe start andekataredis
+
+REM add andekata hosts
+127.0.0.1 api.andekata.app > tmp\andekata-hosts.txt
+127.0.0.1 andekata.app >> tmp\andekata-hosts.txt
+CALL core\libs\hostseditor\HostsEditor.exe /i tmp\andekata-hosts.txt
+
 REM remove temp file
 CALL @RD tmp
 CALL @MD tmp

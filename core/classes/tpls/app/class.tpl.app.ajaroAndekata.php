@@ -24,10 +24,10 @@ class TplAppAjaroAndekata
     {
         $resultItems = $resultActions = '';
    
-        $resultItems .= self::executeBatch(
-			'Andekata Client Setup',
-			self::BAT_CLIENT_SETUP
-		) . PHP_EOL;
+        // $resultItems .= self::executeBatch(
+			// 'Andekata Client Setup',
+			// self::BAT_CLIENT_SETUP
+		// ) . PHP_EOL;
         
         $resultItems .= self::executeBatch(
 			'Andekata Client Update',
@@ -36,10 +36,10 @@ class TplAppAjaroAndekata
 		
 		$resultItems .= TplAestan::getItemSeparator(). PHP_EOL;
 		
-        $resultItems .= self::executeBatch(
-			'Andekata API Setup',
-			self::BAT_API_SETUP
-		) . PHP_EOL;
+        // $resultItems .= self::executeBatch(
+			// 'Andekata API Setup',
+			// self::BAT_API_SETUP
+		// ) . PHP_EOL;
         
         $resultItems .= self::executeBatch(
 			'Andekata API Update',

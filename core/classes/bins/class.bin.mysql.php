@@ -2,7 +2,7 @@
 
 class BinMysql extends Module
 {
-    const SERVICE_NAME = 'neardmysql';
+    const SERVICE_NAME = 'andekatamysql';
     
     const ROOT_CFG_ENABLE = 'mysqlEnable';
     const ROOT_CFG_VERSION = 'mysqlVersion';

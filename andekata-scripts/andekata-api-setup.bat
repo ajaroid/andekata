@@ -24,3 +24,8 @@ REM --- setup... ---
 CALL composer install
 CALL composer setup
 REM TODO HERE
+REM ganti koneksi DB .env
+REM ganti queue driver  .env
+REM ganti cache driver .env
+REM jalankan php artisan storage:link
+REM jalankan migration 
