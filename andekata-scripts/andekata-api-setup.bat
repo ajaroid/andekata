@@ -4,15 +4,15 @@ CLS
 ECHO -by Ajaro 2018
 
 REM --- check requirements... ---
-ECHO check internet connection
-PING www.google.nl -n 1 -w 1000
-IF ERRORLEVEL 1 EXIT /b ERRORLEVEL
-ECHO check git 
-git --version
-ECHO check PHP
-php --version
-ECHO check composer
-CALL composer --version
+REM ECHO check internet connection
+REM PING www.google.nl -n 1 -w 1000
+REM IF ERRORLEVEL 1 EXIT /b ERRORLEVEL
+REM ECHO check git 
+REM git --version
+REM ECHO check PHP
+REM php --version
+REM ECHO check composer
+REM CALL composer --version
 
 REM --- clone andekata-api to local
 ECHO clone andekata-api to local

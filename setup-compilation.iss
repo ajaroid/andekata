@@ -37,7 +37,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Ajaro\Andekata.bak\neard.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Ajaro\Andekata.bak\*"; Excludes: "\setup-compilation.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Ajaro\Andekata.bak\*"; Excludes: "\setup-compilation.iss, \.gitignore, \tes.bat"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

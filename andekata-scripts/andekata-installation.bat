@@ -4,13 +4,13 @@ CLS
 ECHO -by Ajaro 2018
 
 REM --- check requirements... ---
-ECHO check internet connection
-PING www.google.nl -n 1 -w 1000
-IF ERRORLEVEL 1 EXIT /b ERRORLEVEL
-ECHO check 7zip
-tools\7z\7za.exe --help
-ECHO check curl 
-tools\curl\bin\curl.exe --version
+REM ECHO check internet connection
+REM PING www.google.nl -n 1 -w 1000
+REM IF ERRORLEVEL 1 EXIT /b ERRORLEVEL
+REM ECHO check 7zip
+REM tools\7z\7za.exe --help
+REM ECHO check curl 
+REM tools\curl\bin\curl.exe --version
 
 REM tools
 SET SZ=tools\7z\7za.exe

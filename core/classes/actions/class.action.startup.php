@@ -266,13 +266,13 @@ class ActionStartup
         $this->splash->incrProgressBar();
         
         // Stop services
-        /*foreach ($neardBins->getServices() as $sName => $service) {
-            $serviceInfos = $service->infos();
-            if ($serviceInfos === false) {
-                continue;
-            }
-            $service->stop();
-        }*/
+        // foreach ($neardBins->getServices() as $sName => $service) {
+            // $serviceInfos = $service->infos();
+            // if ($serviceInfos === false) {
+                // continue;
+            // }
+            // $service->stop();
+        // }
         
         // Stop third party procs
         $procsKilled = Win32Ps::killBins();
