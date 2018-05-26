@@ -26,6 +26,8 @@ OutputDir=C:\Ajaro
 OutputBaseFilename=andekata-setup-{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
+DisableDirPage=yes
+ShowTasksTreeLines=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -39,8 +41,8 @@ Source: "C:\Ajaro\Andekata.bak\*"; Excludes: "\setup-compilation.iss"; DestDir: 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\core\resources\icons\app.ico"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\core\resources\icons\app.ico"
 
 [Run]
 Filename: "{app}\andekata-scripts\andekata-installation.bat"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Environment..."
@@ -48,6 +50,7 @@ Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php startup"
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php reload"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Reload..."
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVersion"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Checking Version..."
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Executing..."
+Filename: "{app}\core\libs\nssm\nssm.exe"; Parameters: "start andekataredis"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Starting Redis..."
 Filename: "{app}\andekata-scripts\andekata-api-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata API..."
 Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata Client..."
 

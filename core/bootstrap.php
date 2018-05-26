@@ -1,10 +1,10 @@
 <?php
 
-define('APP_TITLE', 'Andekata');
-define('APP_WEBSITE', 'http://ajaro.id');
-define('APP_GITHUB_USER', 'ajaroid');
-define('APP_GITHUB_REPO', 'andekata');
-define('APP_AUTHOR_NAME', 'Yuana');
+define('APP_TITLE', 'Neard');
+define('APP_WEBSITE', 'http://neard.io');
+define('APP_GITHUB_USER', 'neard');
+define('APP_GITHUB_REPO', 'neard');
+define('APP_AUTHOR_NAME', 'CrazyMax');
 
 define('RETURN_TAB', '	');
 

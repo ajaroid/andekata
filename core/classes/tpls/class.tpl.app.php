@@ -231,8 +231,8 @@ class TplApp
             $tplNodejs[self::SECTION_CALL] . PHP_EOL .
             $tplApache[self::SECTION_CALL] . PHP_EOL .
             $tplPhp[self::SECTION_CALL] . PHP_EOL .
-            $tplMysql[self::SECTION_CALL] . PHP_EOL .
-            $tplMariadb[self::SECTION_CALL] . PHP_EOL .
+            // $tplMysql[self::SECTION_CALL] . PHP_EOL .
+            // $tplMariadb[self::SECTION_CALL] . PHP_EOL .
             $tplPostgresql[self::SECTION_CALL] . PHP_EOL .
             
             //// Stuff menus
@@ -254,8 +254,8 @@ class TplApp
 			PHP_EOL . $tplAjaroAndekata[self::SECTION_CONTENT] .
             PHP_EOL . $tplApache[self::SECTION_CONTENT] .
             PHP_EOL . $tplPhp[self::SECTION_CONTENT] .
-            PHP_EOL . $tplMysql[self::SECTION_CONTENT] .
-            PHP_EOL . $tplMariadb[self::SECTION_CONTENT] .
+            // PHP_EOL . $tplMysql[self::SECTION_CONTENT] .
+            // PHP_EOL . $tplMariadb[self::SECTION_CONTENT] .
             PHP_EOL . $tplPostgresql[self::SECTION_CONTENT] .
             PHP_EOL . $tplLogs[self::SECTION_CONTENT] .
             PHP_EOL . $tplTools[self::SECTION_CONTENT] .

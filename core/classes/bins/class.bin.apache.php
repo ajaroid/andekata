@@ -2,7 +2,7 @@
 
 class BinApache extends Module
 {
-    const SERVICE_NAME = 'andekataapache';
+    const SERVICE_NAME = 'neardapache';
     const SERVICE_PARAMS = '-k runservice';
     
     const ROOT_CFG_ENABLE = 'apacheEnable';

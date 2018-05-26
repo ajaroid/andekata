@@ -2,7 +2,7 @@
 
 class BinMariadb extends Module
 {
-    const SERVICE_NAME = 'andekatamariadb';
+    const SERVICE_NAME = 'neardmariadb';
     
     const ROOT_CFG_ENABLE = 'mariadbEnable';
     const ROOT_CFG_VERSION = 'mariadbVersion';
