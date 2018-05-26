@@ -36,7 +36,9 @@ class ActionQuit
                 $name = $neardBins->getMariadb()->getName() . ' ' . $neardBins->getMariadb()->getVersion();
             } elseif ($sName == BinPostgresql::SERVICE_NAME) {
                 $name = $neardBins->getPostgresql()->getName() . ' ' . $neardBins->getPostgresql()->getVersion();
-            }
+            } else if ($sName == BinRedis::SERVICE_NAME) {
+				$name = $neardBins->getRedis()->getName() . ' ' . $neardBins->getPostgresql()->getVersion();
+			}
             $name .= ' (' . $service->getName() . ')';
             
             $this->splash->incrProgressBar();

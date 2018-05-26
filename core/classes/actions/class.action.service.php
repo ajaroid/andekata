@@ -39,7 +39,10 @@ class ActionService
             } elseif ($sName == BinPostgresql::SERVICE_NAME) {
                 $bin = $neardBins->getPostgresql();
                 $port = $bin->getPort();
-            }
+            } elseif ($sName == BinRedis::SERVICE_NAME) {
+				$bin = $neardBins->getRedis();
+				$port = $bin->getPort();
+			}
             
             $name = $bin->getName();
             $service = $bin->getService();

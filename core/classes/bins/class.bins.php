@@ -10,6 +10,7 @@ class Bins
     private $mariadb;
     private $postgresql;
     private $nodejs;
+	private $redis;
     
     public function __construct()
     {
@@ -40,8 +41,18 @@ class Bins
             $this->getMysql(),
             $this->getPhp(),
             $this->getNodejs(),
+			$this->getRedis()
         );
     }
+	
+	public function getRedis()
+	{
+		if ($this->redis == null) {
+			$this->redis = new BinRedis('redis', self::TYPE);
+		}
+		
+		return $this->redis;
+	}
 
     public function getApache()
     {
@@ -114,6 +125,10 @@ class Bins
         if ($this->getPostgresql()->isEnable()) {
             $result[BinPostgresql::SERVICE_NAME] = $this->getPostgresql()->getService();
         }
+		
+		if ($this->getRedis()->isEnable()) {
+			$result[BinRedis::SERVICE_NAME] = $this->getRedis()->getService();
+		}			
     
         return $result;
     }

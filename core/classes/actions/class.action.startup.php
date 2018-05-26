@@ -528,7 +528,10 @@ class ActionStartup
                 } elseif ($sName == BinPostgresql::SERVICE_NAME) {
                     $bin = $neardBins->getPostgresql();
                     $port = $neardBins->getPostgresql()->getPort();
-                }
+                } elseif ($sName == BinRedis::SERVICE_NAME) {
+					$bin = $neardBins->getRedis();
+					$port = $neardBins->getRedis()->getPort();
+				}
                 
                 $name = $bin->getName() . ' ' . $bin->getVersion() . ' (' . $service->getName() . ')';
                 

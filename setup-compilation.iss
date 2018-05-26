@@ -50,14 +50,11 @@ Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php startup"
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php reload"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Reload..."
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVersion"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Checking Version..."
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Executing..."
-Filename: "{app}\core\libs\nssm\nssm.exe"; Parameters: "start andekataredis"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Starting Redis..."
 Filename: "{app}\andekata-scripts\andekata-api-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata API..."
 Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata Client..."
 
 
 [UninstallRun]
-Filename: "{app}\core\libs\nssm\nssm.exe stop andekataredis"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "stop redis service"
-Filename: "{app}\core\libs\nssm\nssm.exe remove andekataredis confirm"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "remove redis service"
 Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d api.andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove api.andekata.app from hosts"
 Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove andekata.app from hosts"
 
