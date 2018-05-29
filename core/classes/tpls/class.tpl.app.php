@@ -198,9 +198,9 @@ class TplApp
         $tplNodejs = TplAppNodejs::process();
         $tplApache = TplAppApache::process();
         $tplPhp = TplAppPhp::process();
-        $tplMysql = TplAppMysql::process();
+        // $tplMysql = TplAppMysql::process();
         $tplMariadb = TplAppMariadb::process();
-        $tplPostgresql = TplAppPostgresql::process();
+        // $tplPostgresql = TplAppPostgresql::process();
         
         $tplLogs = TplAppLogs::process();
         $tplApps = TplAppApps::process();
@@ -232,8 +232,8 @@ class TplApp
             $tplApache[self::SECTION_CALL] . PHP_EOL .
             $tplPhp[self::SECTION_CALL] . PHP_EOL .
             // $tplMysql[self::SECTION_CALL] . PHP_EOL .
-            // $tplMariadb[self::SECTION_CALL] . PHP_EOL .
-            $tplPostgresql[self::SECTION_CALL] . PHP_EOL .
+            $tplMariadb[self::SECTION_CALL] . PHP_EOL .
+            // $tplPostgresql[self::SECTION_CALL] . PHP_EOL .
             
             //// Stuff menus
             TplAestan::getItemSeparator() . PHP_EOL .
@@ -255,8 +255,8 @@ class TplApp
             PHP_EOL . $tplApache[self::SECTION_CONTENT] .
             PHP_EOL . $tplPhp[self::SECTION_CONTENT] .
             // PHP_EOL . $tplMysql[self::SECTION_CONTENT] .
-            // PHP_EOL . $tplMariadb[self::SECTION_CONTENT] .
-            PHP_EOL . $tplPostgresql[self::SECTION_CONTENT] .
+            PHP_EOL . $tplMariadb[self::SECTION_CONTENT] .
+            // PHP_EOL . $tplPostgresql[self::SECTION_CONTENT] .
             PHP_EOL . $tplLogs[self::SECTION_CONTENT] .
             PHP_EOL . $tplTools[self::SECTION_CONTENT] .
             PHP_EOL . $tplApps[self::SECTION_CONTENT] .

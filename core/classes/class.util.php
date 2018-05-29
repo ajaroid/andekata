@@ -639,14 +639,14 @@ class Util
                 'recursive' => true
             );
         }
-
-        // PostgreSQL
-        $folderList = self::getFolderList($neardBins->getPostgresql()->getRootPath());
+		
+		// MariaDB
+        $folderList = self::getFolderList($neardBins->getMariadb()->getRootPath());
         foreach ($folderList as $folder) {
             $paths[] = array(
-                'path' => $neardBins->getPostgresql()->getRootPath() . '/' . $folder,
-                'includes' => array('.nrd', '.conf', '.bat'),
-                'recursive' => true
+                'path' => $neardBins->getMariadb()->getRootPath() . '/' . $folder,
+                'includes' => array('my.ini'),
+                'recursive' => false
             );
         }
         
