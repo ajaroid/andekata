@@ -25,14 +25,8 @@ CALL %PHPWIN% %ENVEDIT% DB_USERNAME root
 CALL %PHPWIN% %ENVEDIT% DB_PASSWORD  
 CALL %PHPWIN% %ENVEDIT% QUEUE_DRIVER redis
 CALL %PHPWIN% %ENVEDIT% CACHE_DRIVER redis
+CALL %PHPWIN% %ENVEDIT% APP_DEBUG false
 
 CALL composer install
 CALL composer setup
 CALL composer new-migration-seed
-
-REM TODO HERE
-REM ganti koneksi DB .env
-REM ganti queue driver  .env
-REM ganti cache driver .env
-REM jalankan php artisan storage:link
-REM jalankan migration 

@@ -52,11 +52,12 @@ Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php checkVer
 Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php exec"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Executing..."
 Filename: "{app}\andekata-scripts\andekata-api-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata API..."
 Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}\apps"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Andekata Client..."
-
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php setupAndekataVhostApi"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Virtual Host API"
+Filename: "{app}\core\libs\php\php-win.exe"; Parameters: "bootstrap.php setupAndekataVhostClient"; WorkingDir: "{app}\core"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Virtual Host Client"
 
 [UninstallRun]
-Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d api.andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove api.andekata.app from hosts"
-Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove andekata.app from hosts"
+Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d andekata.api"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove api.andekata.app from hosts"
+Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d andekata.client"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove andekata.app from hosts"
 
 [UninstallDelete]
 Type: files; Name: "{app}\*"
