@@ -98,6 +98,7 @@ menuWwwDirectory = "www directory"
 
 ; Bins
 apache = "Apache"
+redis = "Redis"
 filezilla = "Filezilla"
 mailhog = "MailHog"
 mariadb = "MariaDB"

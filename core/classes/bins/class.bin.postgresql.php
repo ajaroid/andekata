@@ -2,7 +2,7 @@
 
 class BinPostgresql extends Module
 {
-    const SERVICE_NAME = 'andekatapostgresql';
+    const SERVICE_NAME = 'neardpostgresql';
     
     const ROOT_CFG_ENABLE = 'postgresqlEnable';
     const ROOT_CFG_VERSION = 'postgresqlVersion';

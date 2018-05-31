@@ -106,6 +106,7 @@ class Lang
     const MYSQL = 'mysql';
     const NODEJS = 'nodejs';
     const POSTGRESQL = 'postgresql';
+	const REDIS = 'redis';
 	
     // Apps
     const ADMINER = 'adminer';

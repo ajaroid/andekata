@@ -19,13 +19,15 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=C:\Ajaro\Andekata.bak\lisensi.txt
 OutputDir=C:\Ajaro
 OutputBaseFilename=andekata-setup-{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
+DisableDirPage=yes
+ShowTasksTreeLines=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -35,12 +37,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Ajaro\Andekata.bak\neard.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Ajaro\Andekata.bak\*"; Excludes: "\setup-compilation.iss"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Ajaro\Andekata.bak\*"; Excludes: "\setup-compilation.iss, \.gitignore, \tes.bat"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\core\resources\icons\app.ico"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\core\resources\icons\app.ico"
 
 [Run]
 Filename: "{app}\andekata-scripts\andekata-installation.bat"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Setup Environment..."
@@ -53,8 +55,6 @@ Filename: "{app}\andekata-scripts\andekata-client-setup.bat"; WorkingDir: "{app}
 
 
 [UninstallRun]
-Filename: "{app}\core\libs\nssm\nssm.exe stop andekataredis"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "stop redis service"
-Filename: "{app}\core\libs\nssm\nssm.exe remove andekataredis confirm"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "remove redis service"
 Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d api.andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove api.andekata.app from hosts"
 Filename: "{app}\core\libs\hostseditor\HostsEditor.exe /d andekata.app"; WorkingDir: "{app}"; Flags: shellexec waituntilterminated; StatusMsg: "Remove andekata.app from hosts"
 

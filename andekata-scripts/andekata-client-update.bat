@@ -3,17 +3,6 @@ ECHO OFF
 CLS
 ECHO -by Ajaro 2018
 
-REM --- check requirements... ---
-ECHO check internet connection
-PING www.google.nl -n 1 -w 1000
-IF ERRORLEVEL 1 EXIT /b ERRORLEVEL
-ECHO check git 
-git --version
-ECHO check node
-node --version
-ECHO check npm
-CALL npm --version
-
 REM --- clone andekata-client to local
 CD andekata-client
 git pull origin master

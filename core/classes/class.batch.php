@@ -140,11 +140,12 @@ class Batch
     }
     
     public static function initializePostgresql($path)
-    {
-        if (!file_exists($path . '/init.bat')) {
+    {	
+		if (!file_exists($path . '/init.bat')) {
             Util::logWarning($path . '/init.bat does not exist');
             return;
         }
+		
         self::exec('initializePostgresql', 'CMD /C "' . $path . '/init.bat"', 15);
     }
     
