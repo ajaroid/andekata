@@ -12,9 +12,11 @@ git pull origin master
 REM --- setting environment... ---
 ECHO setting environment
 COPY .env.example .env
-@ECHO REACT_APP_BASE_API_URL=http://api.simdes.ajaro.id > .env
+@ECHO REACT_APP_BASE_API_URL=http://andekata.api > .env
 
 REM --- install dependencies & build client... ---
 CALL npm install
 CALL npm run build
 COPY .htaccess build\.htaccess
+
+REM setup virtual host

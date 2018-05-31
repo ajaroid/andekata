@@ -39,8 +39,8 @@ CALL %SZ% x tmp\%NEARD_GHOSTSCRIPT_FILE% -aoa -otools\ghostscript
 CALL %SZ% x tmp\%NEARD_GIT_FILE% -aoa -otools\git
 
 REM add andekata hosts
-ECHO 127.0.0.1 api.andekata.app >> tmp\andekata-hosts.txt
-ECHO 127.0.0.1 andekata.app >> tmp\andekata-hosts.txt
+ECHO 127.0.0.1 andekata.api >> tmp\andekata-hosts.txt
+ECHO 127.0.0.1 andekata.client >> tmp\andekata-hosts.txt
 CALL core\libs\hostseditor\HostsEditor.exe /i tmp\andekata-hosts.txt
 
 REM remove temp file
